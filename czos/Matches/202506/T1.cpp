@@ -14,6 +14,15 @@ using namespace std;
 int main() {
     // ios::sync_with_stdio(false);
     // cin.tie(0); cout.tie(0);
+    unsigned long long s, e, x, y;
+    cin >> s >> e >> x >> y;
+
+    int xs = s / x;
+    int xe = e / x;
+    int minx = se - xs;
+    int ys = s / y;
+    int ye = e / y;
+    int miny = ye - ys;
 
     return 0;
 }
