@@ -25,7 +25,7 @@ int main() {
     cin >> n >> m;
     for (int i = 1; i <= m; i++) {
         int x, y;
-        cin >> x >> y;
+        cin >> y >> x;  // 恶心输入
         add(x, y);
         in[y]++;
     }
@@ -43,7 +43,7 @@ int main() {
         q.pop();
         for (int i = pre[h]; i; i = a[i].nxt) {
             int to = a[i].to;
-            f[to] = max(f[to], f[i] + 1);
+            f[to] = max(f[to], f[h] + 1);
             in[to]--;
             if (in[to] == 0) {
                 q.push(to);
