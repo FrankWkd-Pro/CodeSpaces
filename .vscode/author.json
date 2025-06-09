@@ -1,0 +1,18 @@
+{
+    "Head Sourse": {
+        "prefix": "#author",
+        "body": [
+            "/*",
+            " * @Author    FrankWKD (wangkedi01)",
+            " * @Date      ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+            " * @Source    $0",
+            " * @License   GNU General Public License 2.0",
+            " * @FileName  ${TM_FILENAME}",
+            " * @FilePath  ${TM_FILEPATH}",
+            " * @Reminder: This program is for study only and is open source. If you want to reprint it, please contact me.",
+            " */",
+            ""
+        ],
+        "description": "Author Header with GPL-2.0"
+    }
+}

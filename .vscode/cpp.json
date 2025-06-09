@@ -1,0 +1,28 @@
+{
+    "C++ Default Source": {
+        "prefix": "#include",
+        "body": [
+            "/*",
+            " * @Author    FrankWKD (wangkedi01)",
+            " * @Date      ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+            " * @Source    $0",
+            " * @License   GNU General Public License 2.0",
+            " * @FileName  ${TM_FILENAME}",
+            " * @FilePath  ${TM_FILEPATH}",
+            " */",
+            "",
+            "// #pragma GCC optimize(3)",
+            "#include <bits/stdc++.h>",
+            "using namespace std;",
+            "",
+            "int main() {",
+            "    // ios::sync_with_stdio(false);",
+            "    // cin.tie(0); cout.tie(0);",
+            "    ",
+            "    ",
+            "    return 0;",
+            "}"
+        ],
+        "description": "C++ Header Template with GPL-2.0"
+    }
+}
