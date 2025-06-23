@@ -39,6 +39,7 @@ void tarjan(int x) {
         } else if (ins[to])
             low[x] = min(low[x], low[to]);
     }
+    // 从to后退时，判断x是否是SCC的入口点
     if (low[x] == dfn[x]) {
         cnt++;
         int t;

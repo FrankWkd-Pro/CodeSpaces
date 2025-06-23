@@ -24,7 +24,7 @@ int sccnt = 0;
 int si[N];  // 每个SCC内部的节点数
 int id[N];  // 每个点属于哪个SCC
 int n, m, x, y;
-void tarjan(int x) {  // 以x为起点进行SCC的查找
+void tarjan(int x) {  // 以x为起点进行SCC的查找(只负责这一层)
     dfn[x] = low[x] = ++times;
     st.push(x);
     inst[x] = true;
@@ -32,12 +32,12 @@ void tarjan(int x) {  // 以x为起点进行SCC的查找
         int to = a[i].to;
         if (!dfn[to]) {
             tarjan(to);  // 逐层向下递归相邻节点
-            low[x] = min(low[x], dfn[x]);
+            low[x] = min(low[x], low[to]);
 
         } else if (inst[to])
-            low[x] = min(low[x], dfn[to]);  // 找到了闭环！更新SCC！
+            low[x] = min(low[x], low[to]);  // 找到了闭环！更新SCC！
     }
-    if (low[x] == dfn[x]) {
+    if (low[x] == dfn[x]) {  // 从to后退时，判断x是否是SCC的入口点
         sccnt++;
         // 找到SCC入口，SCC数量++ 开始弹栈
         int t;
