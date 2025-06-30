@@ -11,8 +11,8 @@
  * @FilePath  /media/frank/FrankW/_default/_Mine!/Working/code-spaces/Luogu/P3627-Tarjan.cpp
  * @Solution  同P3387,几乎是一个题，唯一要注意的就是这一题计算的是以s为起点的最长路，但是我们也可以用拓扑排序+dp的方法，因为缩点后的DAG是保证不存在环的，直接大胆dp就行。
  */
-
-// #pragma GCC optimize(3)
+// 关于DP：因为暴力DFS的方法会导致某些点大量入栈，导致内存爆增，所以我们尝试优化。我们先将dp[s]设置为0,其他节点设置为-inf，表示不可达。我们按照拓扑序从前往后再进行一遍dp，这样就保证了绝对的O(n)复杂度。（Tips：SCC编号的逆序就是拓扑序）
+//  #pragma GCC optimize(3)
 #include <bits/stdc++.h>
 using namespace std;
 const int N = 5e5 + 10;
@@ -24,7 +24,7 @@ int n, m, s, p;
 int x, y;
 int dfn[N], low[N], si[N], id[N], times, sccnt;
 int val[N], vald[N], dp[N];
-bool pubd[N];
+bool pubd[N], inque[N];
 bool pub[N], inst[N];
 stack<int> st;
 inline void add(int u, int v) {
@@ -68,7 +68,6 @@ int main() {
     cin.tie(0);
     cout.tie(0);
     cin >> n >> m;
-    cout << n << m << endl;
     for (int i = 1; i <= m; i++) {
         cin >> x >> y;
         add(x, y);
@@ -89,18 +88,14 @@ int main() {
                 addDAG(x, y);
         }
     }
-    queue<int> q;
-    q.push(id[s]);
-    memset(dp, -0x3f, sizeof(dp));
+    memset(dp, -0x3f, sizeof(dp));  // dp除s之外的其他值为-inf，表示不可达。
     dp[id[s]] = vald[id[s]];
-    while (!q.empty()) {
-        int t = q.front();
-        q.pop();
-        for (int i = pred[t]; i; i = DAG[i].nxt) {
-            dp[DAG[i].to] = max(dp[DAG[i].to], dp[t] + vald[DAG[i].to]);
-            q.push(DAG[i].to);
+    for (int i = sccnt; i >= 1; i--) {
+        for (int j = pred[i]; j; j = DAG[j].nxt) {
+            dp[DAG[j].to] = max(dp[DAG[j].to], dp[i] + vald[DAG[j].to]);
         }
     }
+
     int ans = 0;
     for (int i = 1; i <= sccnt; i++) {
         if (pubd[i] == 1)
