@@ -19,8 +19,8 @@ deque<int> q;
 int a[1010100];
 int n;
 int main() {
-    freopen("duel3.in", "r", stdin);
-    freopen("sample.out", "w", stdout);
+    // freopen("T2_duel_Data/duel4.in", "r", stdin);
+    // freopen("T2_Run_data.out", "w", stdout);
     // ios::sync_with_stdio(false);
     // cin.tie(0); cout.tie(0);
 
