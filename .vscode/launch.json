@@ -8,7 +8,7 @@
             "program": "${fileDirname}/${fileBasenameNoExtension}",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
+            "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
@@ -28,7 +28,7 @@
             "program": "${fileDirname}/${fileBasenameNoExtension}",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
+            "cwd": "${fileDirname}", //!Important 这个路径就是你程序执行的路径，也就是freopen从这个路径下读取文件
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
