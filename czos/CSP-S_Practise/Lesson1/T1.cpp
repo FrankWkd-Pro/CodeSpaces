@@ -9,7 +9,7 @@
  * @Platform  [Frank]iMac Ubuntu Pro 24.04 LTS
  * @FileName  T1.cpp
  * @FilePath  /media/frank/FrankW/_default/_Mine!/Working/code-spaces/czos/CSP-S_Practise/Lesson1/T1.cpp
- * @Solution  额。。。没什么好方法，暴力吧。。。
+ * @Solution  --
  */
 
 // #pragma GCC optimize(3)
@@ -27,22 +27,22 @@ int main() {
     cin >> n;
     for (int i = 1; i <= n; i++) {
         cin >> a[i];
-        f[i] = 1;
     }
     sort(a + 1, a + 1 + n);
+    if (a[1] == 1) {
+        if (a[2] != 1)
+            cout << 1;
+        else
+            cout << 0;
+        return 0;
+    }
     for (int i = 1; i <= n; i++) {
-        for (int j = i + 1; j <= n; j++) {
-            if (a[j] % a[i] == 0)
-                f[j] = 0;
-            if (a[i] == a[j]) {
-                f[i] = 0, f[j] = 0;
-            }
+        if (!f[a[i]] and a[i] != a[i + 1])  // 如果相邻的相等还不行呢
+            ans++;
+        for (int j = a[i]; j <= a[n]; j += a[i]) {
+            f[j] = 1;
         }
     }
-    // for (int i = 1; i <= n; i++) cout << f[i] << " ";
-    for (int i = 1; i <= n; i++)
-        if (f[i] == 1)
-            ans++;
     cout << ans << endl;
     // fclose(stdin);
     // fclose(stdout);

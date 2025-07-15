@@ -15,29 +15,24 @@
 // #pragma GCC optimize(3)
 #include <bits/stdc++.h>
 using namespace std;
-deque<int> q;
-int a[1010100];
-int n;
+const int N = 100005;
+int a[N], n;
+bool cmp(int m, int b) {
+    return m > b;
+}
 int main() {
-    // freopen("T2_duel_Data/duel4.in", "r", stdin);
-    // freopen("T2_Run_data.out", "w", stdout);
-    // ios::sync_with_stdio(false);
-    // cin.tie(0); cout.tie(0);
-
-    cin >> n;
+    scanf("%d", &n);
     for (int i = 1; i <= n; i++) {
-        cin >> a[i];
+        scanf("%d", &a[i]);
     }
-    sort(a + 1, a + 1 + n);
-    for (int i = 1; i <= n; i++) {
-        if (!q.empty() and q.back() < a[i]) {
-            q.pop_back();
-            q.push_front(a[i]);
-        } else
-            q.push_back(a[i]);
+    sort(a + 1, a + n + 1, cmp);
+    int ans = n;
+    for (int i = n, j = n; i >= 1; i--) {
+        if (a[i] > a[j]) {
+            j--;
+            ans--;
+        }
     }
-    cout << q.size();
-    // fclose(stdin);
-    // fclose(stdout);
+    printf("%d", ans);
     return 0;
 }
