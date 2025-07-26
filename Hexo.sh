@@ -1,4 +1,4 @@
-cd /home/frank/文档/My_Blog_Web
+cd /home/frank/文档/Blog_FrankWkd/blog
 hexo clean
 hexo g
-hexo s
+hexo d
