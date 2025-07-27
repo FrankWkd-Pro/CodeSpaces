@@ -10,7 +10,7 @@
     "cph.general.defaultLanguage": "cpp",
     "cph.language.cpp.SubmissionCompiler": "GNU G++14 6.4.0", // 使用 C++14 标准
     "cph.language.cpp.Args": "-std=c++14", // -O2
-    "cph.general.saveLocation": "/media/frank/FrankW/_default/_Mine!/Working/code-spaces/OI/CPH.Extension.Config",
+    "cph.general.saveLocation": "/media/frank/FrankW/_default/Mine/Working/code-spaces/OI/CPH.Extension.Config",
     /*Extensions: Power Mode*/
     "powermode.enabled": true,
     /*Extensions: Background*/
@@ -20,18 +20,18 @@
         "style": {
             "background-position": "100% 100%",
             "background-size": "auto",
-            "opacity": 0.9
+            "opacity": 0.2
         },
         "images": [
-            "file:///media/frank/FrankW/_default/_Mine!/Working/code-spaces/.vscode/VSCodeWallpapers/1.png",
-            "file:///media/frank/FrankW/_default/_Mine!/Working/code-spaces/.vscode/VSCodeWallpapers/2.jpg",
-            "file:///media/frank/FrankW/_default/_Mine!/Working/code-spaces/.vscode/VSCodeWallpapers/3.png",
-            "file:///media/frank/FrankW/_default/_Mine!/Working/code-spaces/.vscode/VSCodeWallpapers/4.png",
-            "file:///media/frank/FrankW/_default/_Mine!/Working/code-spaces/.vscode/VSCodeWallpapers/6.png",
-            "file:///media/frank/FrankW/_default/_Mine!/Working/code-spaces/.vscode/VSCodeWallpapers/7.webp",
-            "file:///media/frank/FrankW/_default/_Mine!/Working/code-spaces/.vscode/VSCodeWallpapers/8.jpg",
-            "file:///media/frank/FrankW/_default/_Mine!/Working/code-spaces/.vscode/VSCodeWallpapers/10.png",
-            "file:///media/frank/FrankW/_default/_Mine!/Working/code-spaces/.vscode/VSCodeWallpapers/11.png"
+            "file:///media/frank/FrankW/_default/Mine/Working/code-spaces/.vscode/VSCodeWallpapers/1.png",
+            "file:///media/frank/FrankW/_default/Mine/Working/code-spaces/.vscode/VSCodeWallpapers/2.jpg",
+            "file:///media/frank/FrankW/_default/Mine/Working/code-spaces/.vscode/VSCodeWallpapers/3.png",
+            "file:///media/frank/FrankW/_default/Mine/Working/code-spaces/.vscode/VSCodeWallpapers/4.png",
+            "file:///media/frank/FrankW/_default/Mine/Working/code-spaces/.vscode/VSCodeWallpapers/6.png",
+            "file:///media/frank/FrankW/_default/Mine/Working/code-spaces/.vscode/VSCodeWallpapers/7.webp",
+            "file:///media/frank/FrankW/_default/Mine/Working/code-spaces/.vscode/VSCodeWallpapers/8.jpg",
+            "file:///media/frank/FrankW/_default/Mine/Working/code-spaces/.vscode/VSCodeWallpapers/10.png",
+            "file:///media/frank/FrankW/_default/Mine/Working/code-spaces/.vscode/VSCodeWallpapers/11.png"
         ],
         "interval": 300,
         "random": true
@@ -88,7 +88,7 @@
     "editor.guides.bracketPairs": true, //括号匹配高亮
     "editor.bracketPairColorization.enabled": true, //括号匹配高亮(彩虹括号)
     "editor.suggest.snippetsPreventQuickSuggestions": false, //智能提示可以按下Enter接受
-    "editor.accessibilitySupport": "on",
+    "editor.accessibilitySupport": "off",
     "editor.suggestSelection": "recentlyUsed",
     "window.dialogStyle": "custom",
     "debug.onTaskErrors": "abort",
@@ -151,7 +151,7 @@
         "terminal.integrated.lineHeight": 1.6, //字体设置
         "terminal.integrated.letterSpacing": 0.1, //字体设置
         "terminal.integrated.fontSize": 30, //字体大小设置
-        "terminal.integrated.fontFamily": "jetbrains mono medium", //字体设置
+        "terminal.integrated.fontFamily": "jetbrains medium mono", //字体设置
         "terminal.integrated.shell.linux": "/bin/zsh",
     },
     "pause-console.terminalEmulator.windows": "cmd",
@@ -271,17 +271,11 @@
     "powermode.explosions.customExplosions": [
         "https://img2024.cnblogs.com/blog/3594125/202504/3594125-20250412223105653-780854003.gif",
     ],
-    "github.copilot.enable": {
-        "*": false,
-        "plaintext": false,
-        "markdown": false,
-        "scminput": false
-    },
     "security.workspace.trust.untrustedFiles": "newWindow",
     "workbench.experimental.share.enabled": true,
     "workbench.productIconTheme": "el-vsc-v1-icons",
     "git.openRepositoryInParentFolders": "never",
-    "cnblogsClient.linux.workspace": "/media/frank/FrankW/_default/_Mine!/Working/code-spaces",
+    "cnblogsClient.linux.workspace": "/media/frank/FrankW/_default/Mine/Working/code-spaces",
     "terminal.integrated.accessibleViewFocusOnCommandExecution": true,
     "terminal.integrated.accessibleViewPreserveCursorPosition": true,
     "terminal.integrated.cursorStyle": "underline",
@@ -290,7 +284,21 @@
     "accessibility.verbosity.terminal": false,
     "accessibility.hideAccessibleView": true,
     "gitlens.graph.minimap.enabled": false,
-    "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-light",
-    "workbench.colorTheme": "GitHub Dark Default",
+    "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-dark",
+    "workbench.colorTheme": "GitHub Dark Colorblind (Beta)",
     "window.menuBarVisibility": "compact",
+    "workbench.editor.showTabs": "single",
+    "workbench.editor.splitInGroupLayout": "vertical",
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    },
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false,
+        "yaml": true
+    },
+    "git.autorefresh": false,
 }
