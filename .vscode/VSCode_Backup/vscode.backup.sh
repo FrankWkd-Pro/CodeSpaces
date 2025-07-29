@@ -24,4 +24,4 @@ ls -1tr | head -n -$MAX_BACKUPS | xargs -d '\n' rm -rf --
 # 记录日志（可选）
 echo "[$(date)] VSCode配置已备份至 $TARGET_DIR" >> "$BACKUP_DIR/backup.log"
 
-/media/frank/FrankW/_default/_Mine!/Working/code-spaces/GitPush.sh "Update vscode config backup files".
+/media/frank/FrankW/_default/Mine/Working/code-spaces/GitPush.sh "Update vscode config backup files".
