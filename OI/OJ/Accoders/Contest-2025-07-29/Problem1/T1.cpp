@@ -21,6 +21,8 @@ using namespace std;
 long long n, x, tot;
 long long two, five;
 int main() {
+    freopen("zero.in", "r", stdin);
+    freopen("zero.out", "w", stdout);
     cin >> n;
     _for(i, 1, n) {
         cin >> x;

@@ -20,6 +20,8 @@
 using namespace std;
 
 int main() {
+    freopen("moon.in", "r", stdin);
+    freopen("moon.out", "w", stdout);
     int n, m;
     cin >> n >> m;
     int pos = 0;  // 0-based
