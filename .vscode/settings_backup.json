@@ -1,0 +1,304 @@
+{
+    /*
+    关于settings.json的一些说明：
+    Vim：已经禁用了复制粘贴全选查找的快捷键，防止和系统快捷键冲突（其实是我不会用Vim的复制粘贴快捷键）
+        “jk”是切换到NormalMode
+        “kj”是后移一个字符（跳出括号时经常用）
+    */
+    /*Extensions: CPH*/
+    //接入以导入样例数据
+    "cph.general.defaultLanguage": "cpp",
+    "cph.language.cpp.SubmissionCompiler": "GNU G++14 6.4.0", // 使用 C++14 标准
+    "cph.language.cpp.Args": "-std=c++14", // -O2
+    "cph.general.saveLocation": "/media/frank/FrankW/_default/Mine/Working/code-spaces/OI/CPH.Extension.Config",
+    /*Extensions: Power Mode*/
+    "powermode.enabled": true,
+    /*Extensions: Background*/
+    "background.enabled": true,
+    "background.fullscreen": {
+        "useFront": true,
+        "style": {
+            "background-position": "100% 100%",
+            "background-size": "auto",
+            "opacity": 0.2
+        },
+        "images": [
+            "file:///media/frank/FrankW/_default/Mine/Working/code-spaces/.vscode/VSCodeWallpapers/1.png",
+            "file:///media/frank/FrankW/_default/Mine/Working/code-spaces/.vscode/VSCodeWallpapers/2.jpg",
+            "file:///media/frank/FrankW/_default/Mine/Working/code-spaces/.vscode/VSCodeWallpapers/3.png",
+            "file:///media/frank/FrankW/_default/Mine/Working/code-spaces/.vscode/VSCodeWallpapers/4.png",
+            "file:///media/frank/FrankW/_default/Mine/Working/code-spaces/.vscode/VSCodeWallpapers/6.png",
+            "file:///media/frank/FrankW/_default/Mine/Working/code-spaces/.vscode/VSCodeWallpapers/7.webp",
+            "file:///media/frank/FrankW/_default/Mine/Working/code-spaces/.vscode/VSCodeWallpapers/8.jpg",
+            "file:///media/frank/FrankW/_default/Mine/Working/code-spaces/.vscode/VSCodeWallpapers/10.png",
+            "file:///media/frank/FrankW/_default/Mine/Working/code-spaces/.vscode/VSCodeWallpapers/11.png"
+        ],
+        "interval": 300,
+        "random": true
+    },
+    /*clang-format*/
+    "C_Cpp.autocompleteAddParentheses": true,
+    "C_Cpp.inlayHints.autoDeclarationTypes.showOnLeft": true,
+    "C_Cpp.inlayHints.autoDeclarationTypes.enabled": true,
+    "C_Cpp.inlayHints.parameterNames.enabled": true,
+    "C_Cpp.inlayHints.referenceOperator.enabled": true,
+    "C_Cpp.vcFormat.space.insertAfterSemicolon": true,
+    "C_Cpp.vcFormat.space.withinCastParentheses": true,
+    "C_Cpp.vcFormat.space.withinExpressionParentheses": true,
+    "C_Cpp.doxygen.sectionTags": [
+        "attention",
+        "tparam",
+        "param",
+        "result",
+        "returns",
+        "retval",
+        "exception",
+        "deprecated",
+        "warning",
+        "note",
+        "bug"
+    ],
+    "C_Cpp.markdownInComments": "enabled",
+    "C_Cpp.default.mergeConfigurations": true,
+    "C_Cpp.default.systemIncludePath": [
+        "/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1 ",
+        "/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include",
+        "/Library/Developer/CommandLineTools/usr/include",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks"
+    ], //合并配置
+    "C_Cpp.default.compilerPath": "/usr/bin/clang", //编译器路径
+    "C_Cpp.clang_format_style": "{BasedOnStyle: Google,IndentWidth: 4,TabWidth: 4,NamespaceIndentation: All,FixNamespaceComments: false,ColumnLimit: 0,AllowShortIfStatementsOnASingleLine: Never}", //Google风格的代码格式化
+    //不需要自动格式化的，删去上面的和第23~25有关格式化的三行
+    /*editor - 美观&编辑类*/
+    "editor.cursorBlinking": "smooth", //使光标闪烁有呼吸感
+    "editor.smoothScrolling": true, //使编辑窗口滚动变平滑
+    "editor.cursorStyle": "underline", //光标样式：下划线
+    "editor.wordWrap": "on", //在文件内容溢出vscode显示区域时自动折行
+    "editor.fontFamily": "jetbrains mono medium",
+    "editor.fontLigatures": true, //启动字体连字
+    "editor.copyWithSyntaxHighlighting": false, //复制代码时复制纯文本而不是连语法高亮都复制了
+    "editor.detectIndentation": false, //不基于文件内容选择缩进用制表符还是空格
+    "editor.formatOnPaste": true, //粘贴时格式化
+    "editor.formatOnSave": true, //保存格式化
+    "editor.formatOnType": true, //按下分号格式化，以上三条有自己码风的选手可以删去
+    "editor.stickyTabStops": true, //移动光标时，将四个空格看作一个Tab
+    "editor.cursorSmoothCaretAnimation": "on", //输入时使光标移动变得平滑
+    "editor.mouseWheelZoom": true, //鼠标滚轮+Commmand(Ctrl)缩放字体大小
+    "editor.guides.bracketPairs": true, //括号匹配高亮
+    "editor.bracketPairColorization.enabled": true, //括号匹配高亮(彩虹括号)
+    "editor.suggest.snippetsPreventQuickSuggestions": false, //智能提示可以按下Enter接受
+    "editor.accessibilitySupport": "off",
+    "editor.suggestSelection": "recentlyUsed",
+    "window.dialogStyle": "custom",
+    "debug.onTaskErrors": "abort",
+    "debug.showBreakpointsInOverviewRuler": true,
+    /*files - 文件类*/
+    "files.autoGuessEncoding": true, //自动猜测文件编码
+    "files.autoSave": "onFocusChange", //失焦时保存
+    "files.exclude": { //隐藏一些碍眼的文件夹
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/tmp": true,
+        "**/node_modules": true,
+        "**/bower_components": true
+    },
+    "files.watcherExclude": { //不索引一些不必要索引的大文件夹以减少内存和CPU消耗
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true,
+        "**/tmp/**": true,
+        "**/bower_components/**": true,
+        "**/dist/**": true
+    },
+    /*search*/
+    "search.followSymlinks": false, //据说可以减少vscode的CPU和内存占用
+    /*workbench*/
+    "workbench.settings.applyToAllProfiles": [
+        "workbench.colorCustomizations"
+    ],
+    "workbench.editorAssociations": {
+        "*.copilotmd": "vscode.markdown.preview.editor"
+    },
+    "workbench.list.smoothScrolling": true, //使文件列表滚动变平滑
+    "workbench.editor.enablePreview": false, //打开文件用新的标签页而不是覆盖原来的
+    "workbench.colorCustomizations": {
+        "editor.selectionBackground": "#4a8672", //选中文本的背景色
+        "editor.selectionHighlightBackground": "#FFFFFF26", //选中文本的高亮背景色
+        "terminal.background": "#00000063", //终端背景色
+        "terminal.foreground": "#26e045", //终端前景色
+        "terminalCursor.background": "#D8D8D8", //终端配色美化
+        "terminalCursor.foreground": "#D8D8D8", //终端配色美化
+        "terminal.ansiBlack": "#181818", //终端配色美化
+        "terminal.ansiBlue": "#7CAFC2", //终端配色美化
+        "terminal.ansiBrightBlack": "#585858", //终端配色美化
+        "terminal.ansiBrightBlue": "#7CAFC2", //终端配色美化
+        "terminal.ansiBrightCyan": "#86C1B9", //终端配色美化
+        "terminal.ansiBrightGreen": "#A1B56C", //终端配色美化
+        "terminal.ansiBrightMagenta": "#BA8BAF", //终端配色美化
+        "terminal.ansiBrightRed": "#AB4642", //终端配色美化
+        "terminal.ansiBrightWhite": "#F8F8F8", //终端配色美化
+        "terminal.ansiBrightYellow": "#F7CA88", //终端配色美化
+        "terminal.ansiCyan": "#86C1B9", //终端配色美化
+        "terminal.ansiGreen": "#A1B56C", //终端配色美化
+        "terminal.ansiMagenta": "#BA8BAF", //终端配色美化
+        "terminal.ansiRed": "#AB4642", //终端配色美化
+        "terminal.ansiWhite": "#D8D8D8", //终端配色美化
+        "terminal.ansiYellow": "#F7CA88", //终端配色美化
+        "terminal.integrated.cursorBlinking": true, //光标闪烁
+        "terminal.integrated.lineHeight": 1.6, //字体设置
+        "terminal.integrated.letterSpacing": 0.1, //字体设置
+        "terminal.integrated.fontSize": 30, //字体大小设置
+        "terminal.integrated.fontFamily": "jetbrains medium mono", //字体设置
+        "terminal.integrated.shell.linux": "/bin/zsh",
+    },
+    "pause-console.terminalEmulator.windows": "cmd",
+    /*Git*/
+    "git.enableSmartCommit": true,
+    "git.autofetch": true,
+    "git.confirmSync": false, //自动同步,
+    /*Extensions - 扩展*/
+    "cnblogsClient.macos.workspace": "/Users/lwj/Desktop/git/frank-wkd_-cloud_warehouse/Main/Cnblogs_FrankWkd",
+    "vscode-pets.theme": "winter",
+    //"vscode-pets.theme": "forest",
+    //"vscode-pets.theme": "castle",
+    //"vscode-pets.theme": "beach",
+    "synthwave84.brightness": 0.9,
+    "glassit.alpha": 111,
+    "glassit.step": 5,
+    "files.associations": {
+        "iostream": "cpp",
+        "string": "cpp",
+        "__bit_reference": "cpp",
+        "__config": "cpp",
+        "__locale": "cpp",
+        "__split_buffer": "cpp",
+        "__threading_support": "cpp",
+        "__verbose_abort": "cpp",
+        "bitset": "cpp",
+        "cctype": "cpp",
+        "clocale": "cpp",
+        "cmath": "cpp",
+        "cstdarg": "cpp",
+        "cstddef": "cpp",
+        "cstdint": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "cstring": "cpp",
+        "ctime": "cpp",
+        "cwchar": "cpp",
+        "cwctype": "cpp",
+        "initializer_list": "cpp",
+        "ios": "cpp",
+        "iosfwd": "cpp",
+        "istream": "cpp",
+        "limits": "cpp",
+        "locale": "cpp",
+        "mutex": "cpp",
+        "new": "cpp",
+        "ostream": "cpp",
+        "ratio": "cpp",
+        "stdexcept": "cpp",
+        "streambuf": "cpp",
+        "string_view": "cpp",
+        "tuple": "cpp",
+        "typeinfo": "cpp",
+        "variant": "cpp",
+        "vector": "cpp",
+        "algorithm": "cpp"
+    },
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        },
+        {
+            "before": [
+                "k",
+                "j"
+            ],
+            "after": [
+                "<Esc>",
+                "l",
+                "a"
+            ]
+        }
+    ],
+    // 禁用Vim的某些默认快捷键，避免与系统快捷键冲突
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false,
+        "<C-c>": false,
+        "<C-v>": false,
+        "<C-z>": false,
+        "<C-y>": false,
+        "<C-w>": false
+    },
+    "security.workspace.trust.banner": "always",
+    "security.workspace.trust.startupPrompt": "always",
+    "vim.cursorStylePerMode.normal": "block-outline",
+    "git.useEditorAsCommitInput": false,
+    "terminal.integrated.fontFamily": "JetBrains Medium Mono",
+    "editor.autoClosingBrackets": "always",
+    "editor.suggest.preview": true,
+    "editor.inlineSuggest.syntaxHighlightingEnabled": true,
+    "editor.suggest.shareSuggestSelections": true,
+    "editor.quickSuggestions": {
+        "comments": "on",
+        "strings": "on"
+    },
+    "editor.quickSuggestionsDelay": 1,
+    "accessibility.signalOptions.volume": 0,
+    "explorer.confirmDelete": false,
+    "Lingma.cloudModelAutoTriggerGenerateLength": "disable",
+    "explorer.confirmDragAndDrop": false,
+    "powermode.explosions.duration": 800,
+    "powermode.combo.threshold": 50,
+    "powermode.presets": "flames",
+    "powermode.combo.location": "editor",
+    "powermode.combo.counterEnabled": "show",
+    "powermode.combo.counterSize": 5,
+    "powermode.combo.timeout": 5,
+    "powermode.combo.timerEnabled": "show",
+    "powermode.shake.enabled": false,
+    "powermode.explosions.customExplosions": [
+        "https://img2024.cnblogs.com/blog/3594125/202504/3594125-20250412223105653-780854003.gif",
+    ],
+    "security.workspace.trust.untrustedFiles": "newWindow",
+    "workbench.experimental.share.enabled": true,
+    "workbench.productIconTheme": "el-vsc-v1-icons",
+    "git.openRepositoryInParentFolders": "never",
+    "cnblogsClient.linux.workspace": "/media/frank/FrankW/_default/Mine/Working/code-spaces",
+    "terminal.integrated.accessibleViewFocusOnCommandExecution": true,
+    "terminal.integrated.accessibleViewPreserveCursorPosition": true,
+    "terminal.integrated.cursorStyle": "underline",
+    "terminal.integrated.defaultLocation": "editor",
+    "terminal.integrated.fontLigatures.enabled": true,
+    "accessibility.verbosity.terminal": false,
+    "accessibility.hideAccessibleView": true,
+    "gitlens.graph.minimap.enabled": false,
+    "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-dark",
+    "workbench.colorTheme": "GitHub Dark Colorblind (Beta)",
+    "window.menuBarVisibility": "compact",
+    "workbench.editor.showTabs": "single",
+    "workbench.editor.splitInGroupLayout": "vertical",
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    },
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false,
+        "yaml": true
+    },
+    "git.autorefresh": false,
+}
