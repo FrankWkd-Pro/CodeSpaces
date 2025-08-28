@@ -1,0 +1,37 @@
+{
+    "C++ Default Source": {
+        "prefix": "#include",
+        "body": [
+            "/*",
+            " * > CPP Code Snippet <",
+            " * > Powered by Microsoft Visual Studio Code <",
+            " *",
+            " * @Author    FrankWKD (wangkedi01)",
+            " * @Date      ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+            " * @Network   \"$0\"",
+            " * @License   GNU General Public License 2.0",
+            " * @Platform  [Frank]iMac Ubuntu Pro 24.04 LTS",
+            " * @FileName  ${TM_FILENAME}",
+            " * @FilePath  ${TM_FILEPATH}",
+            " * @Solution  --",
+            " */",
+            "",
+            "// #pragma GCC optimize(3)",
+            "#include <bits/stdc++.h>",
+            "using namespace std;",
+            "",
+            "int main() {",
+            "    // freopen(\"sample.in\",\"r\",stdin);",
+            "    // freopen(\"sample.out\",\"w\",stdout);",
+            "    // ios::sync_with_stdio(false);",
+            "    // cin.tie(0); cout.tie(0);",
+            "    ",
+            "    ",
+            "    // fclose(stdin);",
+            "    // fclose(stdout);",
+            "    return 0;",
+            "}"
+        ],
+        "description": "C++ Header Template with GPL-2.0"
+    }
+}
