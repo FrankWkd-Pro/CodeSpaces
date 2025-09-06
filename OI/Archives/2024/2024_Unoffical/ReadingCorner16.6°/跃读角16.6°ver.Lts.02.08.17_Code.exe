@@ -1,0 +1,486 @@
+#include <bits/stdc++.h>
+#include <conio.h>
+#include <windows.h>
+using namespace std;
+
+int read_org,saver,nums/*章节总数*/,la;
+string filename = "article.txt",uname = "UKE",ver = "ver.Lts.02.08.17";
+//01:增加书目，02:安全性大更+开发者友好
+string backTimeNow(){// 获取当前时间点  
+	std::time_t currentTime = std::time(nullptr);  
+	
+	// 将时间点转换为本地时间  
+	std::tm* localTime = std::localtime(&currentTime);  
+	
+	// 格式化日期和时间字符串  
+	char buffer[32];  
+	std::snprintf(buffer, sizeof(buffer),  
+		"%04d年-%02d月-%02d日 %02d:%02d:%02d",  
+		1900 + localTime->tm_year,  
+		1 + localTime->tm_mon,  
+		localTime->tm_mday,  
+		localTime->tm_hour,  
+		localTime->tm_min,  
+		localTime->tm_sec);  
+	
+	// 返回字符串  
+	return string(buffer);  
+}  
+void crx_luck(){
+	cout<<"——————————————————\n";
+	srand(time(0)*1000);
+	la = rand()%1000+1;
+	cout<<"<<"<<backTimeNow()<<">>"<<endl;
+	if(la <= 100){
+		cout<<"运势：§大凶§\n";
+	}else if(la <= 300){
+		cout<<"运势：§凶§\n";
+	}else if(la <= 700){
+		cout<<"运势：§小吉§\n";
+	}else if(la <= 900){
+		cout<<"运势：§中吉§\n";
+	}else if(la <= 1000){
+		cout<<"运势：§大吉§\n";
+	}
+	cout<<"——————————————————\n";
+}
+
+// 文章结构体
+struct article{
+	string aname,atime,creater;
+	string contents[10000];//章节内容
+	int lines_num;//章节正文行号
+}dataa[1010];//章节
+
+// 读取所有文章
+void getFileData() {
+	cout<<"书籍路径(输入a为默认数据库)："<<endl;
+	cout<<"警告：从其他位置读取的信息会覆盖数据库中所有未保存的内容！"<<endl;
+	string filep;
+	cin>>filep;
+	if(filep != "a") filename = filep;
+	cout<<"正在读取文章数据..."<<endl;
+	ifstream file(filename);
+	if (!file.is_open()) {
+		cerr << "文件打开失败!(若此文件为新文件名，请忽略)" << endl;
+		getch();
+		return ;
+	}
+	string line;
+	bool is = false;
+	cout<<"是否开启开发者模式？(耗时更长但是可以检查书籍内容) 按a开启"<<endl;
+	if(getch() == 'a') is = true;
+	while (getline(file, line)) {
+		if(is) cout<<line<<"\n";
+		if(line == "#EOF"){
+			break;//唯一停止读入符号
+		}if(line[0] == '<'){
+			getline(file,line);
+			dataa[++nums].aname = line;
+			getline(file,line);
+			dataa[nums].atime = line;
+			getline(file,line);
+			dataa[nums].creater = line;
+		}else{
+			dataa[nums].lines_num++;
+			dataa[nums].contents[dataa[nums].lines_num] = line;
+		}
+	}
+	cout<<"书籍数据已成功读入"<<endl;
+	file.close();
+}
+
+// 保存所有文章
+void saveFileData() {
+	fstream file(filename/*,ios::app*/);
+	for(int i=1;i<=nums;i++){
+		file<<dataa[i].aname<<endl;
+		file<<dataa[i].atime<<endl;
+		file<<dataa[i].creater<<endl;
+		for(int j = 1;j <= dataa[i].lines_num;j++) file<<dataa[i].contents[j]<<endl;
+	}
+	file<<"#EOF\n";
+	cout<<"保存成功."<<endl;
+	file.close();
+}
+
+// 添加章节
+void writeFileData() {
+	cout<<"正在读取数据..."<<endl;
+	getFileData();	
+	cout<<"完成."<<endl;
+	string lcreator, ltitle, ldate;
+	cout << "输入创建人: ";
+	cin>>dataa[++nums].creater;
+	cout << "输入文章名: ";
+	cin>>dataa[nums].aname;
+	cout << "输入时间: ";
+	cin>>dataa[nums].atime;
+	cout<<"请输入章节内容(采用多行输入，输入完毕请用#EOF换行)"<<endl;
+	string lines_ = "";
+	while(lines_ != "#EOF"){
+		dataa[nums].lines_num++;
+		dataa[nums].contents[dataa[nums].lines_num] = lines_;
+		cin>>lines_;
+	}
+	cout<<"已保存到数据库."<<endl;
+	if(read_org == 0){
+		cout<<"是否保存到本地? 1是2否"<<endl;
+		if(getch() == '1') saveFileData();
+	}else if(read_org == 1) saveFileData();
+	
+	cout << "章节添加成功!" << endl;
+}
+
+void newBook(){
+	string name;
+	cout<<"文件名(加后缀)：";
+	cin>>name;
+	ofstream createFile(name);
+	cout<<"已成功创建名为 ["<<name<<"] 的文件"<<endl;
+}
+
+void loadFile(int k){
+	system("cls");
+	cout<<"按下a进入防御模式，输入> Unlock <解除并回到当前进度\n";
+	cout<<"按下任意键开始."<<endl;
+	getch();
+	cout<<"-------------\n";
+	for(int i = 0;i <= dataa[k].lines_num;i++){
+		cout<<dataa[k].contents[i]<<endl;
+		if(getch() == 'a'){
+			system("cls");
+			cout<<"3\n1 2 3 4 5\n2 4 1 3 5\n6 4 2 5 4"<<endl;
+			string k;
+			cin>>k;
+			while(k != "Unlock"){
+				cin>>k;
+			}
+			for(int j = 0;j <= i;j++){ 
+			//	cout<<dataa[k].contents[i]<<endl;
+			}
+		}
+	}
+	cout<<"-------------\n";
+	cout<<"加载完毕。当前章节为："<<k<<"号，请输入要看的章节编号，为-1则取消"<<endl;
+	cin>>k;
+	if(k > 0 and k <= nums) loadFile(k);
+}
+
+void lookBook(){
+	cout<<"正在读取数据..."<<endl;
+	getFileData();
+	cout<<"完成."<<endl;	
+	cout<<"请输入您想阅读的章节的编号"<<endl;
+	for(int i = 1;i <= nums;i++) cout<<"编号 ["<<i<<"] 的章节 ["<<dataa[i].aname<<"] 创建于 ["<<dataa[i].atime<<"] 作者 ["<<dataa[i].creater<<"]"<<endl;
+	int k;
+	cin>>k;
+	if(k < 1 or k > nums) cout<<"错误输入!"<<endl;
+	else loadFile(k);
+}
+
+void settings(){
+	cout<<"自动保存到本地功能处于";
+	if(read_org == 1) cout<<"开启状态"<<endl;
+	else if(read_org == 2) cout<<"关闭状态"<<endl;
+	else cout<<"使用时询问"<<endl;
+	cout<<"按[1]更改"<<endl;
+	if(getch() == '1'){
+		cout<<"请输入你想要改为的值(1/2/0)"<<endl;
+		int k;
+		cin>>k;
+		read_org = k%3;
+	}
+	return ;
+}
+
+void thanks(){
+	system("cls");
+	cout<<"<已关闭源码>"<<endl;
+	cout<<"声明"<<endl;
+	cout<<"此程序和与其相关的子文件为FrankWKD原创!\n此处为唯一解释处，切勿相信别处的擅自修改!\n";
+	cout<<"设计：FrankWKD"<<endl;
+	cout<<"制作：FrankWKD"<<endl;
+	cout<<"任何人不得使用此代码。"<<endl;
+	cout<<"注意事项"<<endl;
+	cout<<"请勿在编辑源文件的同时运行本程序，出现的错误设计人概不负责。"<<endl;
+	cout<<"——————————————————————\n输入1跳转创作者主页，输入2跳转团队\n";
+	char k = getch();
+	if(k == '1') system("start https://www.luogu.com.cn/user/845400");
+	else if(k == '2') system("start https://www.luogu.com.cn/team/80686");
+	Sleep(100000);
+	exit(0);
+}
+
+void main_() {
+	do {
+		system("cls");
+		cout<<"跃读角16.6° - BY FrankWKD"<<endl;
+		cout<<ver<<endl;
+		cout<<"欢迎回来，"<<uname<<"!\n";
+		crx_luck();
+		cout << "1. 创建文章" << endl;
+		cout << "2. 撰写文章" << endl;
+		cout << "3. 查看文章" << endl;
+		cout << "4. 保存更改/重新读入数据" << endl;
+		cout << "5.设置"<<endl;
+		cout<<"6.[必看] 声明"<<endl;
+		char k;
+		k = getch();
+		system("cls");
+		if(k == '1'){
+			newBook();
+		}else if(k == '2'){
+			writeFileData();
+		}else if(k == '3'){
+			lookBook();
+		}else if(k == '4'){
+			cout<<"若要保存更改请按[1]，重新载入按[2]，其他则取消"<<endl;
+			cout<<"警告：重新载入意味着您会丢失所有未保存的数据! "<<endl;
+			char t = getch();
+			if(t == '1') saveFileData();
+			else if(t == '2') getFileData();
+		}else if(k == '5'){
+			settings();
+		}else if(k == '6'){
+			thanks();
+		}
+		Sleep(500);
+	} while (1);
+}
+
+void BackupFile(const char *srcPath, const char *dstPath) {
+	// 打开源文件
+	std::ifstream  src(srcPath, std::ios::binary);
+	std::ofstream  dst(dstPath,   std::ios::binary);
+	dst << src.rdbuf();
+	cout<<"成功备份文件源文件代码.";
+}
+void Build_File_NameData(const char *a,const char* b){
+	CopyFile(a , b , FALSE);
+	cout<<"版本迭代文件记录完成."<<endl;
+}
+
+/*加密*/string encrypt(string n,int k){
+	for(int i = 0;i < n.size();i++) n[i] += k;
+	return n;
+}
+/*解密*/string decrypt(string n,int k){
+	for(int i = 0;i < n.size();i++) n[i] -= k;
+	return n;
+}
+void get_todo(string k){
+	
+}
+void autoLogIn(){
+	string pathL;
+	cout<<"账户地址：";
+	cin>>pathL;
+	ifstream fileL(pathL);
+	string dataL[10];
+	string lL;
+	int i = 0;
+	while(getline(fileL,lL)){
+		dataL[++i] = lL;
+	}
+	fileL.clear();
+	fileL.close();
+	cout<<"免密登录："<<endl;
+	cout<<"用户名: "<<dataL[2]<<endl;
+	dataL[3] = decrypt(dataL[3].substr(1),dataL[3][0] - '0');
+	cout<<"密码："<<dataL[2]<<endl;
+	cout<<"输入验证码即代表您同意此程序本次使用您的信息."<<endl;
+	srand(time(0)*100);
+	string x,k = to_string(rand());
+	cout<<"请输入验证码 ["<<k<<"]\n";
+	cin>>x;
+	if(x != k){
+		cout<<"验证码错误.免密登录失败."<<endl;
+		exit(0);
+	}else{
+		cout<<"我们正在确定您的登录请求..."<<endl;
+		cout<<"这可能会耗费一些时间..."<<endl;
+		uname = dataL[2];
+		get_todo(uname+"todo.exe");
+		cout<<"已确认."<<endl;
+		cout<<"正在进行动态加密..."<<endl;
+		fstream writeF(pathL);
+		srand(time(0)/5);
+		int kkey = rand()%9+1;
+		writeF <<endl<< uname <<endl<<to_string(kkey) + encrypt(dataL[2],kkey)<<endl;
+		cout<<"完成."<<endl;
+		cout<<"请按任意键继续..."<<endl;
+		getch();
+		cout<<"正在跳转..."<<endl;
+		writeF.close();
+	}
+}
+
+void Regist(){
+	string p,pass;
+	cout<<"创建账户的文件保存地址:";
+	cin>>p;
+	ofstream cre(p);
+	cout<<"用户名：";
+	cin>>uname;
+	cout<<"密码：";
+	cin>>pass;
+	cre << endl<<uname<<endl<<"0"<<pass<<endl;
+	cout<<"创建成功!重启后生效!"<<endl;
+	exit(0);
+}
+
+void login(){
+	system("cls");
+	cout<<"跃读角16.6° - BY FrankWKD"<<endl;
+	cout<<ver<<endl;
+	//cout<<"请保证您的电脑是Win7及以上系统且能使用WindowsAPI接口，否则此程序无法正常运行。"<<endl;
+	//cout<<"请勿删除此程序所属文件夹中的任何内容，后果自负!"<<endl;
+	//cout<<"本程序承诺不会在运行时接入互联网且保证不会采集您的任何信息!"<<endl;
+	cout<<"————————————————————————————————————\n";
+	cout<<"1.登录"<<endl;
+	cout<<"2.注册"<<endl;
+	char k;
+	k = getch();
+	if(k == '1'){
+		autoLogIn();
+		main_();
+	}else if(k == '2'){
+		Regist();
+	}
+	exit(0);
+}
+
+void SetConsoleTextColor(WORD attributes) {
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, attributes);
+}
+void gotoxy(int x, int y) { //clear screen
+	COORD pos = {x, y};
+	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleCursorPosition(hOut, pos);
+	return ;
+}
+void ShowCursor() {
+	CONSOLE_CURSOR_INFO cur = {1, 1};
+	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cur);
+}
+void HideCursor() {
+	CONSOLE_CURSOR_INFO cur = {1, 0};
+	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cur);
+}
+void local_gotoxy(HANDLE hOut, int x, int y) { //移动光标
+	COORD pos;
+	pos.X = x; //横坐标
+	pos.Y = y; //纵坐标
+	SetConsoleCursorPosition(hOut, pos);
+}
+void middle_output(char str[], int y) {
+	HANDLE hOutput = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_SCREEN_BUFFER_INFO bInfo;
+	GetConsoleScreenBufferInfo(hOutput, &bInfo);
+	int dwSizeX = bInfo.dwSize.X, dwSizey = bInfo.dwSize.Y; //获取控制台屏幕缓冲区大小
+	int len = strlen(str); //获取要输出的字符串的长度
+	int x = dwSizeX / 2 - len / 2;
+	local_gotoxy(hOutput, x, y); //移动光标
+	cout << str;
+}
+
+void declare() {
+	system("cls");
+	HideCursor();
+	int k = rand(),i = 0;
+	while(i <= 6){
+		Sleep(30*(k%10));
+		srand(time(0)/k);
+		k = rand();
+		if(k % 7 == 0) SetConsoleTextColor(FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+		if(k % 7 == 1) SetConsoleTextColor(FOREGROUND_RED | FOREGROUND_INTENSITY);
+		if(k % 7 == 2) SetConsoleTextColor(FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+		if(k % 7 == 3) SetConsoleTextColor(FOREGROUND_BLUE);
+		if(k % 7 == 4) SetConsoleTextColor(FOREGROUND_RED);
+		if(k % 7 == 5) SetConsoleTextColor(FOREGROUND_GREEN);
+		if(k % 7 == 6) SetConsoleTextColor(FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED);
+		middle_output("<<-< FYY::Cloud >->>",9);
+		if(i == 0) Sleep(1000);
+		middle_output(">> ReadingCorner_悦读角16.6° <<",10);
+		if(i == 0) Sleep(1000);
+		middle_output("[Designed BY]: FrankWKD", 12);
+		middle_output("[Made BY]: FrankWKD", 13);
+		if(i == 0) Sleep(2000);
+		middle_output("CopyRight (C)2024, Continue Service", 14);
+		cout << endl;
+		if(i == 0) Sleep(1000);
+		Sleep(k%100);
+		SetConsoleTextColor(FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED);
+		i++;
+	}
+	Sleep(3000);
+	ShowCursor();
+
+}
+void LoadVCR() {
+	HideCursor();
+	system("cls");
+	for (int i = 1; i <= 100; i++) {
+		gotoxy(0, 0);
+		srand(time(0));
+		middle_output("FYY::Cloud", 0);
+		middle_output("跃读角16.6°", 1);
+		SetConsoleTextColor(FOREGROUND_GREEN);
+		middle_output("Designed BY: FrankWKD  ", 2);
+		middle_output("Made BY: FrankWKD  ", 3);
+		SetConsoleTextColor(FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED);
+		cout << endl;
+		cout << "                                 Complete: " << i << "%" << endl << "        ";
+		for (double j = 1; j <= 100; j += 1.5) {
+			Sleep(0.1);
+			if (i == 100) {
+				SetConsoleTextColor(FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+				cout << "█";
+				SetConsoleTextColor(FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED);
+			} else if (j <= i) {
+				SetConsoleTextColor(FOREGROUND_RED | FOREGROUND_INTENSITY);
+				cout << "█";
+				SetConsoleTextColor(FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED);
+			} else {//▍
+				cout << "█";
+			}
+		}
+		
+		Sleep((double)(rand() % 10 * i / 5));
+		if (i <= 20)
+			middle_output("Amost There...", 7);
+		else if (i <= 40)
+			middle_output("Loading Assets...", 7);
+		else if (i <= 60)
+			middle_output("Checking Update...", 7);
+		else if (i < 100)
+			middle_output("Parsing the Code...", 7);
+	}
+	cout << endl;
+	middle_output("请按任意键继续...", 7);
+	cout << endl;
+	getch();
+	ShowCursor();
+	system("cls");
+}
+
+int main(){
+	//system("rundll32.exe user32.dll,LockWorkStation");
+	string skp = "跃读角16.6°" + ver + "_Code.exe";
+	BackupFile("跃读角16.6°_Latest.cpp",skp.c_str());
+	cout<<"\nSystem: [INIT]Press [1] To Backup Running File.(This Operation Will Cost at Least 1,000KB)"<<endl;
+	if(getch() == '1'){
+		skp = "跃读角16.6°" + ver + "_APP.exe";
+		Build_File_NameData("跃读角16.6°_Latest.exe",skp.c_str());
+		system("cls");
+	}
+	ShowWindow(GetConsoleWindow(), SW_SHOW);
+	declare();
+	LoadVCR();
+	cout<<"跃读角16.6°"<<endl;
+	cout<<"By FrankWKD - "<<ver<<endl;
+	login();
+}
+
