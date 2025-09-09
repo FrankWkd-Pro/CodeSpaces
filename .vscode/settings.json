@@ -287,7 +287,7 @@
     "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-dark",
     "workbench.colorTheme": "GitHub Light Default",
     "window.menuBarVisibility": "compact",
-    "workbench.editor.showTabs": "single",
+    "workbench.editor.showTabs": "multiple",
     "workbench.editor.splitInGroupLayout": "vertical",
     "github.copilot.nextEditSuggestions.enabled": true,
     "extensions.experimental.affinity": {
