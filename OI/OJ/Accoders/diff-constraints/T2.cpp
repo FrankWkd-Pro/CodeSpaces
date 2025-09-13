@@ -16,8 +16,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 int n, m1, m2;
-const int N =
-    int main() {
+const int N = 1e5 + 10;
+int main() {
     // freopen("sample.in","r",stdin);
     // freopen("sample.out","w",stdout);
     // ios::sync_with_stdio(false);
