@@ -39,10 +39,11 @@ int main() {
         mid /= n;
         int mi = -1, ma = -1;
         _for(i, 1, n) {
-            if ()
+            if () {
+            }
         }
     }
     // fclose(stdin);
     // fclose(stdout);
     return 0;
-}
+}  // TODO: 梦熊比赛没思路了www
