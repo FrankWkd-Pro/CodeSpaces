@@ -10,5 +10,5 @@ Templete:
 ```
 #### Commit Types:
 - `Opt`: Change code structure
-- `Normal`: Add Code
+- `Code`: Add Code
 - `Feat`: New things
