@@ -285,7 +285,7 @@
     "accessibility.hideAccessibleView": true,
     "gitlens.graph.minimap.enabled": false,
     "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-dark",
-    "workbench.colorTheme": "GitHub Dark", //在这里修改颜色主题
+    "workbench.colorTheme": "GitHub Light", //在这里修改颜色主题
     "window.menuBarVisibility": "compact",
     "workbench.editor.showTabs": "multiple", //在这里修改选项卡模式
     "workbench.editor.splitInGroupLayout": "vertical",
