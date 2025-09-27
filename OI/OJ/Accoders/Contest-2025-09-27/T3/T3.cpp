@@ -40,7 +40,7 @@ int main() {
             // cout << a[j] << endl;
         }
         ans = max(ans, res);
-        a[i] = p[i] + s[i];
+        _for(i, 1, n) a[i] = p[i] + s[i];
     }
     cout << ans << endl;
     return 0;
