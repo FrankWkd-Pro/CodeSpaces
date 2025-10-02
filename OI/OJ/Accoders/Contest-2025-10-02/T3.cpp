@@ -53,8 +53,8 @@ void bfs(int x) {
     }
 }
 int main() {
-    // freopen("sample.in","r",stdin);
-    // freopen("sample.out","w",stdout);
+    freopen("water.in", "r", stdin);
+    freopen("water.out", "w", stdout);
     // ios::sync_with_stdio(false);
     // cin.tie(0); cout.tie(0);
     cin >> n >> p;

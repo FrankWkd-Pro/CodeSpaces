@@ -21,8 +21,8 @@ using namespace std;
 string s1, s2 = "heidi";
 int i1, i2;
 int main() {
-    // freopen("sample.in","r",stdin);
-    // freopen("sample.out","w",stdout);
+    freopen("delstr.in", "r", stdin);
+    freopen("delstr.out", "w", stdout);
     // ios::sync_with_stdio(false);
     // cin.tie(0); cout.tie(0);
     cin >> s1;

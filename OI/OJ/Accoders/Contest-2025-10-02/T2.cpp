@@ -19,6 +19,8 @@
 using namespace std;
 int T, n;
 int main() {
+    freopen("nums.in", "r", stdin);
+    freopen("nums.out", "w", stdout);
     cin >> T;
     while (T--) {
         cin >> n;
