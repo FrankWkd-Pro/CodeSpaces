@@ -27,6 +27,14 @@ int main() {
     // cin.tie(0); cout.tie(0);
     cin >> s1;
     while (i1 < s1.size() and i2 < s2.size()) {
+        if (s1[i1] == s2[i2])
+            i2++;
+        i1++;
+        // cout << i1 << " " << i2 << endl;
     }
+    if (i2 == s2.size())
+        cout << "YES";
+    else
+        cout << "NO";
     return 0;
 }
