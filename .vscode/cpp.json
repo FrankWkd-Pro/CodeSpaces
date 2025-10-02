@@ -22,6 +22,7 @@
             "#include <bits/stdc++.h>",
             "using namespace std;",
             "// #define int long long",
+            "#define endl \"\\n\"",
             "",
             "int main() {",
             "    // freopen(\"sample.in\",\"r\",stdin);",

@@ -22,13 +22,17 @@ const int N = 1010;
 struct node {
     int to, nxt, len;
 } a[N];
+struct ans {
+    int d1, d2, len;
+};
+vector<ans> v;
 int pre[N], k, din[N], dout[N], n, p, inque[N];
 void add(int u, int v, int l) {
     a[++k] = {v, pre[u], l};
     pre[u] = k;
 }
 void bfs(int x) {
-    memset(f, 0, sizeof f);
+    memset(inque, 0, sizeof inque);
     queue<pair<int, int>> q;
     inque[x] = 1;
     q.push({x, INT_MAX});
@@ -38,7 +42,7 @@ void bfs(int x) {
         for (int i = pre[t.first]; i; i = a[i].nxt) {
             int to = a[i].to;
             if (dout[to] == 0) {
-                cout << x << " " << to << " " << min(t.second, a[i].len);
+                v.push_back({x, to, min(t.second, a[i].len)});
             } else {
                 if (!inque[to]) {
                     inque[to] = 1;
@@ -65,6 +69,10 @@ int main() {
         if (din[i] == 0) {
             bfs(i);
         }
+    }
+    cout << v.size() << "\n";
+    for (auto it : v) {
+        cout << it.d1 << " " << it.d2 << " " << it.len << "\n";
     }
     // fclose(stdin);
     // fclose(stdout);
