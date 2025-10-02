@@ -12,73 +12,25 @@
  * @Sol        --
  */
 
-// #pragma GCC optimize(3)
-#define _for(cc, ba, ab) for (int cc = (ba); cc <= (ab); cc++)
-#define for_(cc, ba, ab) for (int cc = (ba); cc >= (ab); cc--)
+#pragma GCC optimize(3)
 #include <bits/stdc++.h>
 using namespace std;
-// #define int long long
-const int N = 2e5 + 10;
-struct node {
-    int to, nxt;
-} a[N], rev[N];
-int val[N], pre[N], n, k, m, din[N], cost[N], pre_rev[N], k_rev;
-queue<int> q;
-vector<int> ls;
-void add(int u, int v) {
-    a[++k] = {v, pre[u]};
-    pre[u] = k;
-}
-void add_reverse(int u, int v) {
-    rev[++k_rev] = {v, pre_rev[u]};
-    pre_rev[u] = k_rev;
-}
+int n, t[1000010], alt[1000010], k;
 int main() {
     freopen("chores.in", "r", stdin);
     freopen("chores.out", "w", stdout);
-    // ios::sync_with_stdio(false);
-    // cin.tie(0); cout.tie(0);
-
-    cin >> n;
-    _for(i, 1, n) {
-        cin >> val[i];
-        int m;
-        cin >> m;
-        _for(j, 1, m) {
-            int x;
-            cin >> x;
-            add(x, i);
-            add_reverse(i, x);
-            din[i]++;
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++) {
+        scanf("%d", &t[i]);
+        alt[i] = t[i];
+        scanf("%d", &k);
+        for (int j = 1; j <= k; j++) {
+            int a;
+            scanf("%d", &a);
+            alt[i] = max(alt[i], alt[a] + t[i]);
         }
     }
-    _for(i, 1, n) {
-        if (din[i] == 0) {
-            q.push(i);
-            // cout << "--" << i << endl;
-        }
-    }
-    while (!q.empty()) {
-        int t = q.front();
-        q.pop();
-        ls.push_back(t);
-        for (int i = pre[t]; i; i = a[i].nxt) {
-            din[a[i].to]--;
-            if (din[a[i].to] == 0)
-                q.push(a[i].to);
-        }
-    }
-    _for(i, 0, n - 1) {
-        cost[ls[i]] = val[ls[i]];
-        for (int j = pre_rev[ls[i]]; j; j = rev[j].nxt) {
-            cost[ls[i]] = max(cost[ls[i]], cost[rev[j].to] + val[ls[i]]);
-        }
-    }
-    int maxx = 0;
-    _for(i, 0, n - 1) {
-        // cout << ls[i] << endl;
-        maxx = max(maxx, cost[ls[i]]);
-    }
-    cout << maxx << endl;
-    return 0;
+    int ans = 0;
+    for (int i = 1; i <= n; i++) ans = max(ans, alt[i]);
+    printf("%d\n", ans);
 }
