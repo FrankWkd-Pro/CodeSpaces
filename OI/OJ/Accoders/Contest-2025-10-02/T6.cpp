@@ -63,3 +63,10 @@ int main() {
     printf("%d", ans);
     return 0;
 }
+
+////////////////////// CPH-NG DATA STARTS //////////////////////
+/*
+H4sIAAAAAAAAA6tWykvMTVWyUgoxU9JRKkkuVrKKjtVRKsnMTfXJzM0sUbIyNDAw
+qAUAiOvuEScAAAA=
+ */
+/////////////////////// CPH-NG DATA ENDS ///////////////////////
